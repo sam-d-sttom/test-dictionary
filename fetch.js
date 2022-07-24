@@ -22,23 +22,44 @@
 
 // }
 
-// fetch('https://api.dictionaryapi.dev/api/v2/entries/en/hello').then(response => response.json()).then(result => console.log(result))
+// fetch('https://api.dictionaryapi.dev/api/v2/entries/en/kill').then(response => response.json()).then(result => console.log(result))
+
+
 const input = document.querySelector('#input');
+const errorOutput = document.querySelector('#errorOutput');
 const search = document.querySelector('#search');
-const output = document.querySelector('#output');
+const partOfSpeechNoun = document.querySelector('#partOfSpeechNoun');
+const phoneticsNoun = document.querySelector('#phoneticsNoun');
+const meaningNoun = document.querySelector('#meaningNoun');
+const partOfSpeechVerb = document.querySelector('#partOfSpeechVerb');
+const phoneticsVerb = document.querySelector('#phoneticsVerb');
+const meaningVerb = document.querySelector('#meaningVerb');
+const err = document.querySelector('#error');
+const allResult = document.querySelectorAll('.all');
 
 search.addEventListener('click', result );
 
 
 async function dic(){
+    errorOutput.innerText = ''
+    if(!/[a-z]/i.test(input.value)) return output.innerText = 'Please input a word'
+    
     const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${input.value}`);
     const result = await response.json();
-    output.innerText = `Meaning: ${result[0].meanings[0].definitions[0].definition}`
+    partOfSpeechNoun.innerText = `Part of speech: ${result[0].meanings[0].partOfSpeech}`;
+    phoneticsNoun.innerText = `Phonetics: ${result[0].phonetic}`;
+    meaningNoun.innerText = `Meaning as a Noun: ${result[0].meanings[0].definitions[0].definition}`;
+
+    if(result.length != 1){
+    partOfSpeechVerb.innerText = `Part of speech: ${result[0].meanings[1].partOfSpeech}`;
+    phoneticsVerb.innerText = `Phonetics: ${result[0].phonetic}`;
+    meaningVerb.innerText = `Meaning as Verb: ${result[0].meanings[1].definitions[0].definition}`;
+    }
 }
 
 function result(){
     dic().catch(error =>  {
-        console.log(error)
-        output.innerText = 'Error: what you searched might not be a word or you probably made a mistake in the spelling'
+        allResult.forEach(result => result.innerText = '')
+        errorOutput.innerText = 'Error: what you searched might not be a word or you probably made a mistake in the spelling'
     } )
 }

@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <input type="text" id="input" placeholder="Input">
-    <button id="search">SEARCH</button>
-    <p id="output"></p>
+        <input type="text" id="input" placeholder="Input" required>
+        <input type="button" id="search" value="SEARCH">
+  
+    <div>
+        <span id="partOfSpeechNoun" class="all"></span>
+        <span id="phoneticsNoun" class="all"></span>
+        <p id="meaningNoun" class="all"></p>
+    </div>
+
+    <div>
+        <span id="partOfSpeechVerb" class="all"></span>
+        <span id="phoneticsVerb" class="all"></span>
+        <p id="meaningVerb" class="all"></p>
+    </div>
+    
+    <p id="errorOutput"></p>
+    
+    
 
 
     <script src="fetch.js"></script>

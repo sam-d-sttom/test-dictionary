@@ -1,0 +1,15 @@
+span{
+    display: block;
+}
+
+div{
+    margin-top: 20px;
+}
+
+input{
+    margin-top: 50px;
+}
+
+#input{
+    border: 1px blue solid;
+}
