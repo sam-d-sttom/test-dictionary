@@ -9,3 +9,11 @@ input{
 #input{
     border: 1px blue solid;
 }
+
+i{
+    cursor: pointer;
+}
+
+#soundSpan{
+    display: none;
+}
