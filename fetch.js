@@ -28,39 +28,30 @@
 const input = document.querySelector('#input');
 const errorOutput = document.querySelector('#errorOutput');
 const search = document.querySelector('#search');
-const partOfSpeechNoun = document.querySelector('#partOfSpeechNoun');
-const phoneticsNoun = document.querySelector('#phoneticsNoun');
-const meaningNoun = document.querySelector('#meaningNoun');
-const partOfSpeechVerb = document.querySelector('#partOfSpeechVerb');
-const phoneticsVerb = document.querySelector('#phoneticsVerb');
-const meaningVerb = document.querySelector('#meaningVerb');
 const err = document.querySelector('#error');
-const allResult = document.querySelectorAll('.all');
+const div = document.querySelector('div');
+const vowels = 'aeiou'
 
 search.addEventListener('click', result );
 
 
 async function dic(){
-    allResult.forEach(result => result.innerText = '')
+    div.innerHTML = ''
     errorOutput.innerText = ''
     if(!/[a-z]/i.test(input.value)) return output.innerText = 'Please input a word'
     
     const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${input.value}`);
-    const result = await response.json();
-    partOfSpeechNoun.innerText = `Part of speech: ${result[0].meanings[0].partOfSpeech}`;
-    phoneticsNoun.innerText = `Phonetics: ${result[0].phonetic}`;
-    meaningNoun.innerText = `Meaning as a Noun: ${result[0].meanings[0].definitions[0].definition}`;
-
-    if(result[0].meanings.length != 1){
-    partOfSpeechVerb.innerText = `Part of speech: ${result[0].meanings[1].partOfSpeech}`;
-    phoneticsVerb.innerText = `Phonetics: ${result[0].phonetic}`;
-    meaningVerb.innerText = `Meaning as Verb: ${result[0].meanings[1].definitions[0].definition}`;
-    }
+    const result =  await response.json();
+    
+    result[0].meanings.forEach(meaning => document.querySelector('div').innerHTML += `<p>Part of speech: ${meaning.partOfSpeech}<br>
+    Phonetics: ${result[0].phonetic}<br>
+    Meaning as ${vowels.includes(meaning.partOfSpeech[0]) ? 'an' : 'a'} ${meaning.partOfSpeech}: ${meaning.definitions[0].definition}</p>`)
 }
 
 function result(){
     dic().catch(error =>  {
-        allResult.forEach(result => result.innerText = '')
+        console.log(error)
+        div.innerHTML = ''
         errorOutput.innerText = 'Error: what you searched might not be a word or you probably made a mistake in the spelling'
     } )
 }
