@@ -26,10 +26,12 @@ async function dic(){
     //the interaction of the API and getting the response begins here
     const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${input.value}`);
     const result =  await response.json();
-    
+
     //checking the paticular path the pronounciation is embeded depending on the word searched
-    result[0].phonetics[0].audio == '' ? audio = new Audio(result[0].phonetics[1].audio): 
-    audio = new Audio(result[0].phonetics[0].audio);
+    const pronounciation = result[0].phonetics.find((s) => {
+        return s.audio != ''
+    })
+    audio = new Audio(pronounciation.audio);
 
     soundSpan.style.display = 'inline'
 
