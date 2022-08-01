@@ -9,17 +9,35 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>DICTIONARY</h1>
-        <input type="text" id="input" placeholder="Input" required>
-        <input type="button" id="search" value="SEARCH">
-  
-    <div>
+    <header>
+        <span>DICTIONARY</span>
         
-    </div>
-    <span id="soundSpan">Pronounciation <i class="fa-solid fa-ear-listen" ></i></span>
-
+        <nav>
+            <i class="fa-solid fa-xmark ham closeHam" aria-hidden="true"></i>
+            <ul>
+                <li id="home">HOME</li>
+                <li id="wordOfDay">WORD OF THE DAY</li>
+                <li id="about">ABOUT</li>
+            </ul>
+        </nav>
+        <i class="fa-solid fa-bars ham openHam" aria-hidden="true"></i>
+    </header>
+  
+    <section>
+        <div id="searchBar">
+            <i class="fa-solid fa-magnifying-glass" id="search" aria-hidden="true"></i>
+            <input type="text" id="input" placeholder="Input A Word To Search" required>
+            <p id="errorOutput"></p>
+            <i class="fa-solid fa-xmark" id="clearSearchIput" aria-hidden="true"></i>
+        </div>
+        <span id="searchedWord"></span>
+            <div id="searchResult">
+                
+            </div>
+            <span id="soundSpan">Pronounciation <i class="fa-solid fa-ear-listen" id="soundIcon"></i></span>
     
-    <p id="errorOutput"></p>
+    
+    </section>
     
     
 

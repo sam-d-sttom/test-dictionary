@@ -1,13 +1,132 @@
-div{
-    margin-top: 20px;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
 }
 
-input{
-    margin-top: 50px;
+body{
+    background: #E8B4B8;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    position: fixed;
+    width: 100vw;
+    background: #EED6D3;
+    color: #67595E;
+    top: 0;
+    z-index: 100;
+}
+
+header > span{
+    font-size: 30px;
+}
+
+#searchBar{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    padding: 5px 10px;
+    width: 40%;
+    height: 30px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #input{
-    border: 1px blue solid;
+    width: 80%;
+    border: none;
+    outline: none;
+}
+
+#searchBar i{
+    width: 2.5%;
+    /* margin: 0 5px; */
+    color: #E8B4B8;
+}
+
+#errorOutput{
+    display: none;
+    position: absolute;
+    width: 300px;
+    padding: 5px;
+    top: 130%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.ham{
+    display: none;
+}
+
+nav{
+    width: 350px;
+    transition: all .5s ease-in-out;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+#home{
+    position: absolute;
+    left: 0%;
+}
+
+#wordOfDay{
+    position: absolute;
+    left: 50%;
+    transform: translate(-52%);
+}
+
+#about{
+    position: absolute;
+    right: 0;
+}
+
+nav ul li{
+    border: 2px solid #EED6D3;
+    font-size: 1rem;
+    padding: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+nav ul li:hover{
+    cursor: pointer;
+    font-size: 0.8rem;
+    /* height: 15px; */
+}
+
+section{
+    /* position: relative; */
+    margin-top: 73px;
+    background: #E8B4B8;
+    padding: 20px 50px;
+}
+
+
+#searchedWord{
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+#searchResult > div{
+    margin: 20px 0;
 }
 
 i{
@@ -16,4 +135,51 @@ i{
 
 #soundSpan{
     display: none;
+}
+
+@media(max-width: 800px){
+    #searchBar{
+        width: 100%;
+    }
+}
+
+@media(max-width: 600px){
+    .ham{
+        display: inline;
+        font-size: 2rem;
+    }
+
+    nav{
+        position: fixed;
+        height: 100vh;
+        width: 60vw;
+        top: 0;
+        right: -100%;
+        z-index: 1000;
+        background: #EED6D3;
+        padding: 0 10px;
+    }
+
+    nav ul{
+        height: 100%
+    }
+
+    #home{
+        top: 100px;
+    }
+    
+    #wordOfDay{
+        top: 150px;
+        transform: translate(-52%);
+    }
+    
+    #about{
+        top: 200px;
+    }
+}
+
+@media(max-width: 290px){
+    nav ul li{
+        font-size: 0.8rem;
+    }
 }
