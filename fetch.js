@@ -1,3 +1,5 @@
+import { gameResult } from "./random-words.js";
+
 const input = document.querySelector('#input');
 const errorOutput = document.querySelector('#errorOutput');
 const search = document.querySelector('#search');
@@ -10,6 +12,7 @@ const soundSpan = document.querySelector('#soundSpan');
 const ham = document.querySelectorAll('.ham');
 const nav = document.querySelector('nav');
 const vowels = 'aeiou'
+const ponit = document.querySelector('.point')
 let audio;
 
 ham.forEach(btn => btn.addEventListener('click', operationHam))
@@ -45,6 +48,7 @@ async function dic(){
     searchResult.innerHTML = '';
     errorOutput.innerText = '';
     soundSpan.style.display = 'none';
+    searchedWord.innerText = ''
     //this next line of code checks if a user has inputed a word in the input area
     if(!/[a-z]/i.test(input.value)){
         errorOutput.style.display = 'block';
@@ -81,3 +85,53 @@ function result(){
         errorOutput.innerText = 'Error: what you searched might not be a word or you probably made a mistake in the spelling'
     } )
 }
+
+
+$('.box').click((click)=>{
+    $('.box').each((i,e)=> {
+        $(e).hasClass(click.target.classList[1]) ? e.classList.add('moveBox') : $(e).hide()
+    });
+    $('.confusion').show();
+})
+
+
+$('.noGame').click(no)
+
+function no(){
+    $('.box').each((i,e)=> {
+        $('.moveBox').removeClass('correctBox');
+        $('.moveBox span').removeClass('correctBoxSpan');
+        e.classList.remove('moveBox');
+        $('.boxContent').show()
+        $('.answerContent').hide()
+        setTimeout(()=>{
+            $(e).show()
+        }, 400)
+        $('.confusion').hide()
+        })
+}
+
+$('.yesGame').click(()=>{
+    $('.boxContent').hide();
+    $('.answerContent').show();
+    $('.moveBox').addClass('correctBox');
+    $('.moveBox span').addClass('correctBoxSpan');
+    let count = parseInt($('.point').text());
+    $('.moveBox .answerContent').text() == 'CORRECT' ? count++ : count = count - 3;
+    if(count < 0) count = 0;
+    $('.point').text(`${count}`)
+    setTimeout(no, 2000)
+    setTimeout(gameResult, 2500)
+})
+
+
+const fade = { opacity: 0, transition: 'opacity 2500ms' };
+setTimeout(()=>{$('.loadingGame').css(fade).slideUp(2500)}, 2000)
+setTimeout(()=>{$('.gameInstructions').css({left: '-100%', transition: 'all 0.5s ease-in-out'})}, 7000)
+
+console.log($('.loadingGame'))
+
+
+gameResult()
+
+// $('.box').each(e => console.log('working'))

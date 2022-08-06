@@ -7,6 +7,7 @@
     <script src="https://kit.fontawesome.com/739d8ed1c8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <header>
@@ -15,9 +16,9 @@
         <nav>
             <i class="fa-solid fa-xmark ham closeHam" aria-hidden="true"></i>
             <ul>
-                <li id="home">HOME</li>
-                <li id="wordOfDay">WORD OF THE DAY</li>
-                <li id="about">ABOUT</li>
+                <li id="home"><a href="">HOME</a></li>
+                <li id="wordOfDay"><a href="">WORD OF THE DAY</a></li>
+                <li id="about"><a href="">ABOUT</a></li>
             </ul>
         </nav>
         <i class="fa-solid fa-bars ham openHam" aria-hidden="true"></i>
@@ -31,17 +32,69 @@
             <i class="fa-solid fa-xmark" id="clearSearchIput" aria-hidden="true"></i>
         </div>
         <span id="searchedWord"></span>
-            <div id="searchResult">
+        <div id="searchResult">
                 
+        </div>
+        <span id="soundSpan">Pronounciation <i class="fa-solid fa-ear-listen" id="soundIcon"></i></span>
+    
+        <div class="game">
+            <div class="loadingGame">
+                <span>IMPROVE YOUR VOCABULARY WITH THE</span>
+                <span>WORD GAME</span>
             </div>
-            <span id="soundSpan">Pronounciation <i class="fa-solid fa-ear-listen" id="soundIcon"></i></span>
-    
-    
+
+            <div class="gameInstructions">
+                <p>The aim of the game is to improve your vocabulary. Get a point for each correct answer and to spice things up you loose 3 points for each wrong answer.</p>
+                <p>There would be 3 levels:
+                    <ul>
+                        <li>5 questions in beginner level</li>
+                        <li>15 questions in intermediate level</li>
+                        <li>30 questions in advanced level</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="gameTop">
+                <div>
+                    <p>Select the box containing the word for the meaning below.</p>
+                    <i class="fa-solid fa-xmark closeGame" aria-hidden="true"></i>
+                </div>
+                <p class="meaning"></p>
+            </div>
+
+            <div class="boxDiv">
+                <!-- i'm adding the same class name at the index of 2 to each parent and its child, so i can perform a click event on the parent element without causing bug when the child elements are clicked. would understand more when going through the js files -->
+                
+                <div class="box bOne boxOne">
+                    <span class="boxContent bOne"></span>
+                    <span class="answerContent bOne"></span>
+                </div>
+                <div class="box bTwo boxTwo">
+                    <span class="boxContent bTwo"></span>
+                    <span class="answerContent bTwo"></span>
+                </span></div>
+                <div class="box bThree boxThree">
+                    <span class="boxContent bThree"></span>
+                    <span class="answerContent bThree"></span>
+                </div>
+            </div>
+
+            <div class="confusion">
+                <span>Are you sure?</span>
+                <div>
+                    <button class="yesGame">YES</button>
+                    <button class="noGame">NO</button>
+                </div>
+            </div>
+            <div class="points">
+                <span>score: <span class="point">0</span></span>
+            </div>
+        </div>
     </section>
     
     
 
 
-    <script src="fetch.js"></script>
+    <script type="module" src="fetch.js"></script>
 </body>
 </html>
