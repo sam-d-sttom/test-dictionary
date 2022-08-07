@@ -86,7 +86,7 @@ nav ul{
     left: 0%;
 }
 
-#wordOfDay{
+#wordGame{
     position: absolute;
     left: 50%;
     transform: translate(-52%);
@@ -151,6 +151,7 @@ i{
     padding: 5px;
     position: relative;
     overflow: hidden;
+    display: none;
 }
 
 .loadingGame{

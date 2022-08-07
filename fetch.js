@@ -13,6 +13,8 @@ const ham = document.querySelectorAll('.ham');
 const nav = document.querySelector('nav');
 const vowels = 'aeiou'
 const ponit = document.querySelector('.point')
+const wordGame = document.querySelector('#wordGame')
+const closeGame = document.querySelector('.closeGame')
 let audio;
 
 ham.forEach(btn => btn.addEventListener('click', operationHam))
@@ -87,6 +89,20 @@ function result(){
 }
 
 
+wordGame.addEventListener('click', ()=>{
+    $('.game').show()
+    const fade = { opacity: 0, transition: 'opacity 2500ms' };
+    setTimeout(()=>{$('.loadingGame').css(fade).slideUp(2500)}, 2000)
+    setTimeout(()=>{$('.gameInstructions').css({left: '-100%', transition: 'all 0.5s ease-in-out'})}, 9000)
+})
+closeGame.addEventListener('click', ()=>{
+    $('.game').hide()
+    gameResult()
+    const fade = { opacity: 1, transition: 'opacity 0ms' };
+    setTimeout(()=>{$('.loadingGame').css(fade).slideDown()}, 0)
+    setTimeout(()=>{$('.gameInstructions').css({left: '0%', transition: 'all 0.5s ease-in-out'})}, 0)
+})
+
 $('.box').click((click)=>{
     $('.box').each((i,e)=> {
         $(e).hasClass(click.target.classList[1]) ? e.classList.add('moveBox') : $(e).hide()
@@ -125,13 +141,10 @@ $('.yesGame').click(()=>{
 })
 
 
-const fade = { opacity: 0, transition: 'opacity 2500ms' };
-setTimeout(()=>{$('.loadingGame').css(fade).slideUp(2500)}, 2000)
-setTimeout(()=>{$('.gameInstructions').css({left: '-100%', transition: 'all 0.5s ease-in-out'})}, 9000)
+
 
 console.log($('.loadingGame'))
 
 
 gameResult()
 
-// $('.box').each(e => console.log('working'))
