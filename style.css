@@ -208,14 +208,15 @@ i{
 .boxDiv{
     position: relative;
     margin: 0px 10%;
-    width:80%;
+    width: 80%;
     height: 300px;
 }
 
 .box{
     display: flex;
-    margin: 25px 0;
-    width: 15vw;
+    margin: 50px 0;
+    /* width: 15vw; */
+    width: 25%;
     height: 15vw;
     border: 2px solid #EED6D3;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -226,7 +227,7 @@ i{
     align-items: center;
     text-transform: uppercase;
     perspective: 1000px;
-    font-size: 1.5vw;
+    font-size: 2vw;
 }
 
 .boxOne{
@@ -239,13 +240,14 @@ i{
 }
 
 .boxThree{
-    left: 80%;
+    left: 75%;
 }
 
 .moveBox{
     left: 50%;
+    margin-top: 50px;
     font-size: 2.5vw;
-    margin: 0px 0;
+    /* margin: 0px 0; */
     width: 20vw;
     height: 20vw;
     transform: translate(-50%);
@@ -284,6 +286,10 @@ i{
     #searchBar{
         width: 100%;
     }
+    .box{
+        display: flex;
+        margin: 100px 0;
+    }
 }
 
 @media(max-width: 600px){
@@ -318,6 +324,30 @@ i{
     
     #about{
         top: 200px;
+    }
+}
+
+@media(max-width: 420px){
+    .box{
+        font-size: 2.2vw;
+        width: 30%;
+        top: 0;
+    }
+    .boxTwo{
+        top: 16vw;
+    }
+    .boxThree{
+        left: 70%;
+    }
+    .moveBox{
+        left: 50%;
+        margin-top: 50px;
+        top: 10%;
+        font-size: 3vw;
+        /* margin: 0px 0; */
+        width: 20vw;
+        height: 20vw;
+        transform: translate(-50%);
     }
 }
 
