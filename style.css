@@ -346,9 +346,18 @@ i{
         top: 10%;
         font-size: 3vw;
         /* margin: 0px 0; */
-        width: 20vw;
-        height: 20vw;
-        transform: translate(-50%);
+        width: 45%;
+        height: 25vw;
+        /* transform: translate(-50%); */
+    }
+    .correctBox{
+        left: 35%;
+    }
+    .loadingGame{
+        font-size: 16px;
+    }
+    .gameInstructions{
+        font-size: 16px;
     }
 }
 

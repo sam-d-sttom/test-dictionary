@@ -127,7 +127,7 @@ $('.yesGame').click(()=>{
 
 const fade = { opacity: 0, transition: 'opacity 2500ms' };
 setTimeout(()=>{$('.loadingGame').css(fade).slideUp(2500)}, 2000)
-setTimeout(()=>{$('.gameInstructions').css({left: '-100%', transition: 'all 0.5s ease-in-out'})}, 7000)
+setTimeout(()=>{$('.gameInstructions').css({left: '-100%', transition: 'all 0.5s ease-in-out'})}, 9000)
 
 console.log($('.loadingGame'))
 
